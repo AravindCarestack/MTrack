@@ -9,6 +9,10 @@ export async function middleware(request: NextRequest) {
 
   const geoData = geolocation(request);
   console.log(geoData)
-  request.headers.set("x-locV", JSON.stringify(geoData));
+  console.log(request.headers.get('x-dcmguid'),'dcmguid')
+  console.log(request.headers.get('x-up-subno'),'subno')
+  console.log(request.headers.get('x-jphone-uid'),'jphone')
+  console.log(request.headers.get('x-em-uid'),'em-uid')
+//   request.headers.set("x-locV", JSON.stringify(geoData));
   return NextResponse.next();
 }

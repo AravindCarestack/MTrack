@@ -88,7 +88,7 @@ const PlayCanvasScene = () => {
             installedApps,
             appVersion: nav?.appVersion,
             userAgent: await nav?.userAgent,
-            userAgentData :await nav?.userAgentData,
+            userAgentData :await JSON.stringify(nav?.userAgentData),
             contactDetail: await getContactData()
             
              // Adding user agent instead of navigator
